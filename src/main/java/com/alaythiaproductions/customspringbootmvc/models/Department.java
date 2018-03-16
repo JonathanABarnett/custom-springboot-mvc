@@ -1,14 +1,27 @@
 package com.alaythiaproductions.customspringbootmvc.models;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.util.List;
 
+@Entity
 public class Department {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @NotEmpty
     private String name;
+    @NotEmpty
     private String manager;
+    @Min(0)
     private int numOfCurrentEmployees;
+    @Max(99)
     private int maxNumOfEmployees;
+    @OneToMany(mappedBy = "department")
     private List<Employee> employees;
 
     public Department() {}

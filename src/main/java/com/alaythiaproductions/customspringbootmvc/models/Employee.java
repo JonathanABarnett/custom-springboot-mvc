@@ -1,18 +1,37 @@
 package com.alaythiaproductions.customspringbootmvc.models;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+
+import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 
+@Entity
 public class Employee {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @NotEmpty
     private String firstName;
+    @NotEmpty
     private String lastName;
+    @NotEmpty
+    @Column(unique = true)
+    @Email
     private String email;
+    @Size(min = 6)
     private String password;
+    @NotEmpty
     private String city;
+    @NotEmpty
     private String state;
+    @ManyToOne
+    @JoinColumn(name = "DEPARTMENT_ID")
     private Department department;
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private List<Skill> skills;
 
     public Employee() {}

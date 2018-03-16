@@ -1,10 +1,21 @@
 package com.alaythiaproductions.customspringbootmvc.models;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
+
+@Entity
 public class Skill {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty
     private String name;
+    @NotEmpty
     private String description;
+    @ManyToOne
+    @JoinColumn(name = "EMPLOYEE_ID")
     private Employee employee;
 
     public Skill() {}
