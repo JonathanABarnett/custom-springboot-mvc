@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragment::head"></head>
+
+<body id="bg-index">
+<nav th:replace="fragment::nav"></nav>
+
+<div class="container">
+    <div class="jumbotron" id="jumbo">
+        <h1 class="text text-center" th:text="${heading}">Title</h1>
+        <br/>
+        <form th:action="@{/addSkill}" th:object="${skill}" method="post">
+            <div class="form-group">
+                <label for="name" class="form-control-label">Skill Name</label>
+                <input class="form-control" type="text" th:field="*{name}" id="name" placeholder="Enter Skill Name"/>
+                <div class="text text-danger" th:if="${errors}" th:errors="*{name}"></div>
+            </div>
+            <div class="form-group">
+                <label for="description" class="form-control-label">Description</label>
+                <textarea class="form-control" th:field="*{description}" id="description" placeholder="Please enter skill description"></textarea>
+                <div class="text text-danger" th:errors="*{description}"></div>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Add Skill</button>
+        </form>
+    </div>
+</div>
+<footer th:replace="fragment::footer"></footer>
+</body>
+</html>

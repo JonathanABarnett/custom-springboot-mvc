@@ -29,6 +29,7 @@ public class SkillController {
         session.setAttribute("id", id);
 
         model.addAttribute("title", "Add Skill");
+        model.addAttribute("heading", "Add a New Skill");
         model.addAttribute("skill", new Skill());
 
         return "views/addSkill";
@@ -46,7 +47,7 @@ public class SkillController {
         int id = (Integer) session.getAttribute("id");
         skillService.addSkill(skill, employeeService.findOne(id));
 
-        return "redirect:/listEmployees";
+        return "redirect:/listOfEmployees";
 
     }
 }
