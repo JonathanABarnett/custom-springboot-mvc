@@ -20,11 +20,15 @@ public class SkillService {
         skillRepository.save(skill);
     }
 
-    public List<Skill> findEmployeeSkills(Employee employee) {
-        return skillRepository.findByEmployee(employee);
+    public List<Skill> findByEmployeeId(int id) {
+        return skillRepository.findByEmployeeId(id);
     }
 
     public List<Skill> findByName(String name ) {
         return skillRepository.findByName(name);
+    }
+
+    public List<Skill> findAll() {
+        return skillRepository.findAll();
     }
 }
