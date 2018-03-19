@@ -2,9 +2,16 @@ body, html {
     height: 100%;
 }
 #bg-index {
-    background-image: url(../img/background.jpg);
+    background-image: url(../img/background1.jpg);
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
+}
+
+#jumbo {
+    background: rgba(132, 175, 148, 0.35);
+    padding-top: 25px;
+    margin-top: 25px;
 }

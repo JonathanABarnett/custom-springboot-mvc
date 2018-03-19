@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -32,7 +33,7 @@ public class Employee {
     @JoinColumn(name = "DEPARTMENT_ID")
     private Department department;
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    private List<Skill> skills;
+    private List<Skill> skills = new ArrayList<>();
 
     public Employee() {}
 

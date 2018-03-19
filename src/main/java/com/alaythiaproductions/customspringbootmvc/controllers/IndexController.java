@@ -11,6 +11,7 @@ public class IndexController {
     @RequestMapping(value = "")
     public String indexPage(Model model) {
         model.addAttribute("title", "Home Page");
+        model.addAttribute("home_page", "A Random Website");
         return "views/index";
     }
 }
