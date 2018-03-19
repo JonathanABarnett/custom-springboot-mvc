@@ -17,7 +17,7 @@ public class DepartmentService {
         return departmentRepository.findAll();
     }
 
-    public Department findById(long id) {
-        return departmentRepository.findOne(id);
+    public Department findById(int id) {
+        return departmentRepository.getOne(id);
     }
 }

@@ -9,7 +9,7 @@ public class Skill {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @NotEmpty
     private String name;
     @NotEmpty
@@ -31,7 +31,7 @@ public class Skill {
         this.employee = employee;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 

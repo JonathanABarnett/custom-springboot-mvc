@@ -39,11 +39,11 @@
                 <span th:errors="*{city}"></span>
             </div>
             <div class="form-group">
-                <label for="state">State</label>
-                <select class="form-control" id="state" th:field="*{state}">
-                    <option th:value="AL">Alabama</option>
-                    <option th:value="AK">Alaska</option>
-                    <option th:value="AZ">Arizona</option>
+                <label th:for="state">State</label>
+                <select class="form-control" name="state" id="state" th:field="*{state}">
+                    <option value="AL">Alabama</option>
+                    <option value="AK">Alaska</option>
+                    <option value="AZ">Arizona</option>
                     <option value="AR">Arkansas</option>
                     <option value="CA">California</option>
                     <option value="CO">Colorado</option>
@@ -96,8 +96,8 @@
                 <span ></span>
             </div>
             <div class="form-group">
-                <label for="departmentId">Department</label>
-                <select class="form-control" name="departmentId" id="departmentId" th:field="*{department.id}">
+                <label th:for="department">Department</label>
+                <select  name="departmentId" >
                     <option th:each="department : ${departments}" th:value="${department.id}" th:text="${department.name}"></option>
                 </select>
             </div>

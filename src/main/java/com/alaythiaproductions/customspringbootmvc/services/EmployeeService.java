@@ -21,7 +21,7 @@ public class EmployeeService {
         employeeRepository.save(employee);
     }
 
-    public Employee findOne(long id) {
+    public Employee findOne(int id) {
         return employeeRepository.findOne(id);
     }
 

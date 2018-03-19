@@ -26,26 +26,30 @@ public class AddEmployeeController {
         model.addAttribute("title", "New Employee");
         model.addAttribute("heading", "Register a new Employee");
         model.addAttribute("departments", departmentService.findAll());
-        model.addAttribute("employee", new Employee());
+        model.addAttribute(new Employee());
         return "views/addEmployee";
     }
 
     @PostMapping(value = "/addEmployee")
-    public String processAddEmployeeForm(Model model, @ModelAttribute @Valid Employee employee, @RequestParam long departmentId, Errors errors) {
+    public String processAddEmployeeForm(Model model, @ModelAttribute @Valid Employee employee, @RequestParam int departmentId, Errors errors) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "New Employee");
+            model.addAttribute("heading", "Register a new Employee");
             model.addAttribute("departments", departmentService.findAll());
             return "views/addEmployee";
         }
 
         if (employeeService.employeeAlreadyExsists(employee.getEmail())) {
             model.addAttribute("exists", true);
+            model.addAttribute("title", "New Employee");
+            model.addAttribute("heading", "Register a new Employee");
+            model.addAttribute("departments", departmentService.findAll());
             return "views/addEmployee";
         }
 
         Department department = departmentService.findById(departmentId);
         employee.setDepartment(department);
         employeeService.createEmployee(employee);
-        return "return views/success";
+        return "views/success";
     }
 }

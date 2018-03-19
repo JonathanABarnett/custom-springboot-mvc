@@ -12,7 +12,7 @@ public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     @NotEmpty
     private String name;
     @NotEmpty
@@ -33,7 +33,7 @@ public class Department {
         this.maxNumOfEmployees = maxNumOfEmployees;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
