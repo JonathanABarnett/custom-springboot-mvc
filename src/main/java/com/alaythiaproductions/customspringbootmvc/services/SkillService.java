@@ -23,4 +23,8 @@ public class SkillService {
     public List<Skill> findEmployeeSkills(Employee employee) {
         return skillRepository.findByEmployee(employee);
     }
+
+    public List<Skill> findByName(String name ) {
+        return skillRepository.findByName(name);
+    }
 }

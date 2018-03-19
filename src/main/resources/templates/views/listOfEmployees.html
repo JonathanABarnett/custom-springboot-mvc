@@ -7,14 +7,13 @@
 
 <div class="container">
     <div class="jumbotron" id="jumbo">
-        <h1 class="text text-center" th:text="${employee_list}">Title</h1>
+        <h1 class="text text-center" th:text="${heading}">Title</h1>
         <br/>
         <div class="container">
             <form action="/listOfEmployees" class="form-inline">
-                <div class="form-group mb-2">
-                    <input type="text" class="form-control" name="name" placeholder="Search for Employee" />
+                    <input type="text" class="form-control" name="name" placeholder="Search by Last Name" />
                     <button class="btn btn-primary" type="submit" style="margin-left: 10px">Search</button>
-                </div>
+
             </form>
             <div class="card">
                 <div class="card card-body">
@@ -29,6 +28,7 @@
                                 <th>City</th>
                                 <th>State</th>
                                 <th>Add Skill</th>
+                                <th>View Skills</th>
                             </tr>
                         </thead>
                         <tbody th:each="employee : ${employees}">
@@ -40,6 +40,7 @@
                             <td th:text="${employee.city}"></td>
                             <td th:text="${employee.state}"></td>
                             <td><a th:href="@{/addSkill(id=${employee.id})}" class="btn btn-info">Add Skill</a></td>
+                            <td><a th:href="@{/listOfSkills(id=${employee.id})}" class="btn btn-info">View Skills</a></td>
                         </tbody>
                     </table>
                 </div>
