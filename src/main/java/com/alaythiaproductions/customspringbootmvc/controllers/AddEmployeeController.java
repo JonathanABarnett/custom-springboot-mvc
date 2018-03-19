@@ -21,17 +21,17 @@ public class AddEmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping(value = "/addEmployee")
+    @GetMapping("/addEmployee")
     public String addEmployeeForm(Model model) {
         model.addAttribute("title", "New Employee");
         model.addAttribute("heading", "Register a new Employee");
         model.addAttribute("departments", departmentService.findAll());
-        model.addAttribute(new Employee());
+        model.addAttribute("employee", new Employee());
         return "views/addEmployee";
     }
 
-    @PostMapping(value = "/addEmployee")
-    public String processAddEmployeeForm(Model model, @ModelAttribute @Valid Employee employee, @RequestParam int departmentId, Errors errors) {
+    @PostMapping("/addEmployee")
+    public String processAddEmployeeForm(@Valid @ModelAttribute Employee employee, @RequestParam int departmentId, Model model, Errors errors) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "New Employee");
             model.addAttribute("heading", "Register a new Employee");
@@ -50,6 +50,8 @@ public class AddEmployeeController {
         Department department = departmentService.findById(departmentId);
         employee.setDepartment(department);
         employeeService.createEmployee(employee);
+        model.addAttribute("title", "Success!");
+        model.addAttribute("success", "Success in adding new Employee!");
         return "views/success";
     }
 }

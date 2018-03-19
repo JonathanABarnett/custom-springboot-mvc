@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragment::head"></head>
+
+<body id="bg-index">
+<nav th:replace="fragment::nav"></nav>
+
+<div class="container">
+    <div class="jumbotron" id="jumbo">
+        <h1 class="text text-center" th:text="${employee_list}">Title</h1>
+        <br/>
+        <div class="container">
+            <form action="/listOfEmployees" class="form-inline">
+                <div class="form-group mb-2">
+                    <input type="text" class="form-control" name="name" placeholder="Search for Employee" />
+                    <button class="btn btn-primary" type="submit" style="margin-left: 10px">Search</button>
+                </div>
+            </form>
+            <div class="card">
+                <div class="card card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Department</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Add Skill</th>
+                            </tr>
+                        </thead>
+                        <tbody th:each="employee : ${employees}">
+                            <td th:text="${employee.id}"></td>
+                            <td th:text="${employee.firstName}"></td>
+                            <td th:text="${employee.lastName}"></td>
+                            <td th:text="${employee.email}"></td>
+                            <td th:text="${employee.department.name}"></td>
+                            <td th:text="${employee.city}"></td>
+                            <td th:text="${employee.state}"></td>
+                            <td><a th:href="@{/addSkill(id=${employee.id})}" class="btn btn-info">Add Skill</a></td>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

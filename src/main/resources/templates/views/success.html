@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title></title>
-</head>
+<head th:replace="fragment::head"></head>
 
-<body>
-<h1>SUCCESS!</h1>
+<body id="bg-index">
+<nav th:replace="fragment::nav"></nav>
+
+<div class="container">
+    <div class="jumbotron" id="jumbo">
+        <h1 class="text text-center" th:text="${success}">Title</h1>
+        <br/>
+        <div class="container">
+            <h3 class="text text-center">Success!</h3>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragment::footer"></footer>
 </body>
 </html>

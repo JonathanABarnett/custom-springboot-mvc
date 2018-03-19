@@ -12,31 +12,31 @@
         <div class="alert alert-info" th:if="${exists}">
             <p>Employee with this email address already exists</p>
         </div>
-        <form  method="post" th:object="${employee}">
+        <form th:action="@{/addEmployee}" th:object="${employee}" method="post">
             <div class="form-group">
                 <label for="firstName" class="form-control-label">First Name</label>
                 <input class="form-control" type="text" th:field="*{firstName}" id="firstName" placeholder="Enter First Name"/>
-                <span th:errors="*{firstName}"></span>
+                <div class="text text-danger" th:if="${errors}" th:errors="*{firstName}"></div>
             </div>
             <div class="form-group">
                 <label for="lastName" class="form-control-label">Last Name</label>
                 <input class="form-control" type="text" th:field="*{lastName}" id="lastName" placeholder="Enter Last Name"/>
-                <span th:errors="*{lastName}"></span>
+                <div class="text text-danger" th:errors="*{lastName}"></div>
             </div>
             <div class="form-group">
                 <label for="email" class="form-control-label">Email</label>
                 <input class="form-control" type="email" th:field="*{email}" id="email" placeholder="example@email.com"/>
-                <span th:errors="*{email}"></span>
+                <div class="text text-danger" th:errors="*{email}"></div>
             </div>
             <div class="form-group">
                 <label for="password" class="form-control-label">Password</label>
                 <input class="form-control" type="password" th:field="*{password}" id="password" placeholder="Enter Password"/>
-                <span th:errors="*{password}"></span>
+                <div class="text text-danger" th:errors="*{password}"></div>
             </div>
             <div class="form-group">
                 <label for="city" class="form-control-label">City</label>
                 <input class="form-control" type="text" th:field="*{city}" id="city" placeholder="Enter City"/>
-                <span th:errors="*{city}"></span>
+                <div class="text text-danger" th:errors="*{city}"></div>
             </div>
             <div class="form-group">
                 <label th:for="state">State</label>
@@ -93,18 +93,17 @@
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
                 </select>
-                <span ></span>
             </div>
             <div class="form-group">
                 <label th:for="department">Department</label>
-                <select  name="departmentId" >
+                <select class="form-control" name="departmentId" >
                     <option th:each="department : ${departments}" th:value="${department.id}" th:text="${department.name}"></option>
                 </select>
             </div>
-            <span></span>
             <button class="btn btn-primary" type="submit">Register</button>
         </form>
     </div>
 </div>
+<footer th:replace="fragment::footer"></footer>
 </body>
 </html>

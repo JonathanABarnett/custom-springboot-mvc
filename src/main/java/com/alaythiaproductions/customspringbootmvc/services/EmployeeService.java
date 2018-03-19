@@ -33,6 +33,14 @@ public class EmployeeService {
         return employeeRepository.findByLastName(lastName);
     }
 
+    public List<Employee> findByFirstNameLike(String firstName) {
+        return employeeRepository.findByFirstNameLike("%" + firstName + "%");
+    }
+
+    public List<Employee> findByLastNameLike(String lastName) {
+        return employeeRepository.findByLastNameLike("%" + lastName + "%");
+    }
+
     public boolean employeeAlreadyExsists(String email) {
         Employee employee = employeeRepository.findByEmail(email);
         if (employee != null) {

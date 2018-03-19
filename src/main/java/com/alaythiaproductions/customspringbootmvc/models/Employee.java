@@ -2,7 +2,6 @@ package com.alaythiaproductions.customspringbootmvc.models;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -15,7 +14,7 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotEmpty
+    @NotEmpty(message = "Error")
     private String firstName;
     @NotEmpty
     private String lastName;
